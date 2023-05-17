@@ -17,31 +17,35 @@
     </div>
   </div>
 </div>
-<div>
+<div class="container">
   <div class="row">
-    <div col-xs-12></div>
-    <form action="">
+    <div  class="col-xs-12">
+    <form [formGroup]="ProjectForm">
       <ul>
         <li>
           <label for="projectName" class="form-control">Project name: </label>
-          <input type="text" name="projectName" class="form-control">
+          <input type="text" formControlName="projectName" class="form-control">
         </li>
+        <br>
         <li>
           <label for="email" class="form-control">Email: </label>
-          <input type="text" name="email" class="form-control">
+          <input type="text" formControlName="email" class="form-control">
         </li>
-        <li>
-          <label for="">Project status Dropdawn</label>
-          <select id="" class="formcontrol">
+        <br>
+        <li> 
+          <label for="projectStatus">Project status :</label>
+          <select id="" class="dropdown" formControlName="projectStatus">
             <option value="stable">Stable</option>
-            <option value="critical">Stable</option>
+            <option value="critical">Crictical</option>
             <option value="finished">Finished</option>
             </select>
         </li>
-        <li>
-          <button class="btn btn primary">Submit</button>
-        </li>
+        <br>
+        
+          <button type="button" class="btn btn-primary">Submit</button>
+        
         </ul>
     </form>
   </div>
+</div>
 </div>
