@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
     this.projectForm = new FormGroup({
-      //      'projectName': new FormControl(null, [Validators.required,this.forbiddenNames.bind(this)]),
-      'projectName': new FormControl(null, [Validators.required]),
+      'projectName': new FormControl(null, [Validators.required,this.forbiddenNames.bind(this)]),
+      //'projectName': new FormControl(null, [Validators.required]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'projectStatus': new FormControl(null)
   });
@@ -21,12 +21,14 @@ export class AppComponent implements OnInit {
   options: string[] = ['Stable', 'Critical', 'Finished'];
   onSubmit() {
     console.log(this.projectForm);
+    console.log(this.projectForm.get('projectName'));
     this.projectForm.reset();
+    this.projectForm.setValue
   }
   
 
-    forbiddenProjectNames = ['Test'];
-  forbiddenNames(control: FormControl) {
+ // static  forbiddenProjectNames = ['Test'];
+   forbiddenNames(control: FormControl) {
     if (control.value==='Test' && control.value!== -1) {
       return  true;
     }

@@ -23,13 +23,13 @@
       <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
         <ul>
           <li>
-            <label for="projectName" class="form-control">Project name: </label>
+            <label  class="form-control">Project name: </label>
             <input type="text" formControlName="projectName" class="form-control">
             
           </li>
            <br>
           <li>
-            <label for="email" class="form-control">Email: </label>
+            <label  class="form-control">Email: </label>
             <input type="text" formControlName="email" class="form-control">
             </li>
           <br>
@@ -50,10 +50,11 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </ul>
 
-              <div>
-
-        </div>
+             
       </form>
+      <div>
+        <p>{{this.projectForm.get('projectName')}}/p>
+      </div>
     </div>
   </div>
 </div>
