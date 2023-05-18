@@ -17,35 +17,42 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="form-control">
   <div class="row">
-    <div  class="col-xs-12">
-    <form [formGroup]="ProjectForm">
-      <ul>
-        <li>
-          <label for="projectName" class="form-control">Project name: </label>
-          <input type="text" formControlName="projectName" class="form-control">
-        </li>
-        <br>
-        <li>
-          <label for="email" class="form-control">Email: </label>
-          <input type="text" formControlName="email" class="form-control">
-        </li>
-        <br>
-        <li> 
-          <label for="projectStatus">Project status :</label>
-          <select id="" class="dropdown" formControlName="projectStatus">
-            <option value="stable">Stable</option>
-            <option value="critical">Crictical</option>
-            <option value="finished">Finished</option>
+    <div class="col-xs-12">
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <ul>
+          <li>
+            <label for="projectName" class="form-control">Project name: </label>
+            <input type="text" formControlName="projectName" class="form-control">
+          </li>
+          
+          <br>
+          <li>
+            <label for="email" class="form-control">Email: </label>
+            <input type="text" formControlName="email" class="form-control">
+            </li>
+          <br>
+          <li>
+            <label for="projectStatus">Project status :</label>
+            <select id="" class="dropdown" formControlName="projectStatus">
+              <option value="stable">Stable</option>
+              <option value="critical">Crictical</option>
+              <option value="finished">Finished</option>
+
+              <!-- <option *ngFor=" let op of options">{{op}}</option>
+             <option value="critical">Crictical</option>
+            <option value="finished">Finished</option> -->
             </select>
-        </li>
-        <br>
-        
-          <button type="button" class="btn btn-primary">Submit</button>
-        
+          </li>
+          <span *ngIf="!projectForm.valid && projectForm.touched" class="help-block">Please enter valid data!</span>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </ul>
-    </form>
+        <div>
+
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  ProjectForm!:FormGroup;
+  projectForm!: FormGroup;
+  constructor() { }
   ngOnInit(): void {
-    this.ProjectForm=new FormGroup({
-
-      'projectName':new FormControl(null,Validators.required),
-      'email':new FormControl(null,[Validators.required,Validators.email])
-
-    });
-    
+    this.projectForm = new FormGroup({
+      //      'projectName': new FormControl(null, [Validators.required,this.forbiddenNames.bind(this)]),
+      'projectName': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'projectStatus': new FormControl(null)
+  });
   }
+  options: string[] = ['Stable', 'Critical', 'Finished'];
+  onSubmit() {
+    console.log(this.projectForm);
+    this.projectForm.reset();
+  }
+  
+
+    forbiddenProjectNames = ['Test'];
+  forbiddenNames(control: FormControl) {
+    if (control.value==='Test' && control.value!== -1) {
+      return  true;
+    }
+    return null;
+  }
+
+
+
 }
